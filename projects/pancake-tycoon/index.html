@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pancake Tycoon — NALENC</title>
+  <meta name="description" content="오리가 굽는 B급 팬케이크 타이쿤. 손님을 받고, 반죽을 붓고, 뒤집고, 농장까지 돌보는 하루.">
+  <meta property="og:title" content="Pancake Tycoon — NALENC">
+  <meta property="og:description" content="오리가 굽는 B급 팬케이크 타이쿤.">
+  <meta property="og:image" content="../../assets/img/duck.png">
+  <meta name="theme-color" content="#0d0816">
+  <link rel="icon" href="../../assets/img/duck.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&family=Unbounded:wght@400;700;900&display=swap">
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link rel="stylesheet" href="../../assets/css/project.css">
+</head>
+<body>
+  <div class="scroll-bar"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="logo" href="../../">NALENC<small>날것들</small></a>
+    <nav class="links">
+      <a href="../../#projects">← Projects</a>
+      <a href="#play">Play</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- 첫 화면 -->
+  <section class="hero" id="hero">
+    <div class="hero-text">
+      <p class="eyebrow" data-reveal>Project 01 · In development</p>
+      <h1 class="title" data-reveal style="--d:.08s"><span>PANCAKE</span><span class="y">TYCOON</span></h1>
+      <p class="tagline" data-reveal style="--d:.16s">오리가 굽는 B급 팬케이크 타이쿤.<br>손님을 받고, 붓고, 뒤집고, 농장까지 돌보는 하루.</p>
+      <ul class="chips" data-reveal style="--d:.24s">
+        <li>Tycoon</li><li>Godot 4.7</li><li>PC · Steam</li><li>Android</li>
+      </ul>
+    </div>
+    <div class="hero-art" id="hero-art" aria-hidden="true">
+      <svg class="ring" viewBox="0 0 200 200">
+        <defs><path id="circ" d="M100,100 m-82,0 a82,82 0 1,1 164,0 a82,82 0 1,1 -164,0"/></defs>
+        <text><textPath href="#circ">PANCAKE TYCOON · 오리가 굽는다 · 꽥 · PANCAKE TYCOON · 오리가 굽는다 · 꽥 ·</textPath></text>
+      </svg>
+      <div class="stack">
+        <i style="--j:0"></i><i style="--j:1"></i><i style="--j:2"></i><i style="--j:3"></i>
+        <b class="butter"></b>
+      </div>
+      <img class="duck" src="../../assets/img/duck.png" alt="">
+    </div>
+    <a class="hero-down" href="#play">스크롤 <span class="bob">↓</span></a>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span>POUR</span><span class="dot">●</span><span class="o">FLIP</span><span class="dot">●</span><span class="y">STACK</span><span class="dot">●</span><span>꽥!</span><span class="dot">●</span><span>SELL</span><span class="dot">●</span>
+      <span>POUR</span><span class="dot">●</span><span class="o">FLIP</span><span class="dot">●</span><span class="y">STACK</span><span class="dot">●</span><span>꽥!</span><span class="dot">●</span><span>SELL</span><span class="dot">●</span>
+    </div>
+  </div>
+
+  <!-- 하루를 스크롤로 -->
+  <section id="play" class="pin story" data-scene="story" style="--len: 640vh">
+    <div class="stage story-stage">
+      <div class="story-visual" aria-hidden="true">
+        <div class="disc"></div>
+        <div class="big-no"><span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span></div>
+        <div class="props">
+          <div class="prop p0"><i class="receipt"></i></div>
+          <div class="prop p1"><i class="pan"></i></div>
+          <div class="prop p2"><i class="knife"></i><i class="fruit a"></i><i class="fruit b"></i><i class="fruit c"></i></div>
+          <div class="prop p3"><i class="egg a"></i><i class="egg b"></i><i class="milk"></i></div>
+          <div class="prop p4"><i class="sign"><span>OPEN</span><span>CLOSE</span></i></div>
+          <div class="prop p5"><i class="moon"></i></div>
+        </div>
+        <img class="story-duck" src="../../assets/img/duck.png" alt="">
+      </div>
+      <div class="story-steps">
+        <p class="eyebrow">A day at the shop</p>
+        <div class="steps">
+          <article data-step="0"><span class="k">01 — Counter</span><h2>손님 받기</h2><p>손님이 오면 주문을 받고, 포스기에서 영수증이 “치지직”. 오래 기다리게 하면 손님이 점점 붉어지고 별점이 깎여요.</p></article>
+          <article data-step="1"><span class="k">02 — Kitchen</span><h2>붓고, 뒤집고</h2><p>반죽을 부을 땐 떨어지는 거리까지 계산해야 해요. 기포가 올라오면 지금이다 — 뒤집기 한 판 승부.</p></article>
+          <article data-step="2"><span class="k">03 — Prep</span><h2>재료 손질</h2><p>코끼리가 코로 재료를 뿜어 올리면, 칼을 가로로 문 오리가 그어서 벱니다. 돌멩이는 베지 마세요. 깡!</p></article>
+          <article data-step="3"><span class="k">04 — Farm</span><h2>농장 돌보기</h2><p>텃밭에 물을 주고, 젖소와 닭이 놓고 간 우유와 달걀을 주워 창고로. 내일 장사는 오늘 준비해요.</p></article>
+          <article data-step="4"><span class="k">05 — Close</span><h2>하루 마감</h2><p>OPEN 간판이 빙글 돌아 CLOSE. 하루 매출 영수증이 내려오면 “정산 완료” 도장을 쾅.</p></article>
+          <article data-step="5"><span class="k">06 — Story</span><h2>둥근 것들의 마을</h2><p>연못이 잘 보이는 작은 팬케이크 가게. 이상하게도, 아무도 오리를 의심하지 않아요. 꽥.</p></article>
+        </div>
+        <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 정보 -->
+  <section class="facts">
+    <div class="fact" data-reveal><span>장르</span><b>캐주얼 타이쿤</b></div>
+    <div class="fact" data-reveal style="--d:.06s"><span>엔진</span><b>Godot 4.7</b></div>
+    <div class="fact" data-reveal style="--d:.12s"><span>플랫폼</span><b>PC (Steam) · Android</b></div>
+    <div class="fact" data-reveal style="--d:.18s"><span>상태</span><b>출시 준비 중</b><small>구글 플레이 내부 테스트</small></div>
+  </section>
+
+  <section class="credits">
+    <p class="eyebrow" data-reveal>Made by</p>
+    <ul data-reveal style="--d:.1s">
+      <li><b>Kiriko</b><span>Director · Programmer</span></li>
+      <li><b>Dune</b><span>Art · Story · UI</span></li>
+      <li><b>Capy</b><span>Programmer</span></li>
+      <li><b>Kora</b><span>New Crew</span></li>
+    </ul>
+  </section>
+
+  <section class="next">
+    <p class="eyebrow" data-reveal>Next from NALENC</p>
+    <div class="next-row">
+      <div class="nx" aria-disabled="true" data-reveal><span>02</span><b>Circle Horror</b><em>Coming Soon</em></div>
+      <div class="nx" aria-disabled="true" data-reveal style="--d:.08s"><span>03</span><b>Duck Please!</b><em>Coming Soon</em></div>
+    </div>
+  </section>
+
+  <section id="contact" class="cta">
+    <h2 data-reveal>소식은<br><span class="y">디스코드에서.</span></h2>
+    <div class="cta-row" data-reveal style="--d:.1s">
+      <a class="btn solid" href="https://discord.gg/7uwZD7Hkh" target="_blank" rel="noopener">디스코드 들어오기 <span class="arr">→</span></a>
+      <a class="btn" href="../../#projects">모든 프로젝트 <span class="arr">→</span></a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>© 2026 NALENC · 날것들</span>
+    <span class="sp"></span>
+    <a href="../../">nalenc.kr</a>
+  </footer>
+
+  <script src="../../assets/js/site.js"></script>
+  <script>
+    // 첫 화면 오리 — 마우스 따라 살짝 기울기
+    (() => {
+      const art = document.getElementById("hero-art");
+      if (!art || !matchMedia("(hover: hover)").matches) return;
+      addEventListener("pointermove", (e) => {
+        const x = e.clientX / innerWidth - 0.5, y = e.clientY / innerHeight - 0.5;
+        art.style.setProperty("--mx", x.toFixed(3));
+        art.style.setProperty("--my", y.toFixed(3));
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NALENC — 날것 그대로 만드는 게임팀</title>
+  <meta name="description" content="NALENC(날것들)는 작은 인디 게임팀입니다. 지금은 오리가 굽는 팬케이크 타이쿤, Pancake Tycoon 을 만들고 있어요.">
+  <meta property="og:title" content="NALENC — 날것 그대로 만드는 게임팀">
+  <meta property="og:description" content="오리가 굽는 팬케이크 타이쿤, Pancake Tycoon 을 만들고 있어요.">
+  <meta property="og:image" content="assets/img/duck.png">
+  <meta name="theme-color" content="#0d0816">
+  <link rel="icon" href="assets/img/duck.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&family=Unbounded:wght@400;700;900&display=swap">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+</head>
+<body>
+  <div class="scroll-bar"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="logo" href="#top">NALENC<small>날것들</small></a>
+    <nav class="links">
+      <a href="#crew">Crew</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- 1. 30초 인트로 -->
+  <section id="top" class="reel" aria-label="NALENC 30초 쇼릴">
+    <canvas id="reel" aria-hidden="true"></canvas>
+    <div class="reel-ui">
+      <div class="reel-meta"><span id="reel-chapter">01 — IGNITION</span><span id="reel-time">00:00 / 00:30</span></div>
+      <div class="reel-bar" id="reel-bar" role="slider" aria-label="쇼릴 시간" aria-valuemin="0" aria-valuemax="30" aria-valuenow="0" tabindex="0">
+        <div class="fill" id="reel-fill"></div>
+        <div class="ticks" id="reel-ticks"></div>
+      </div>
+      <div class="reel-btns">
+        <button class="rb" id="reel-play" aria-label="일시정지">❚❚</button>
+        <button class="rb" id="reel-restart" aria-label="처음부터">↺</button>
+        <span class="sp"></span>
+        <a class="rb wide" href="#manifesto" id="reel-skip">스크롤해서 더 보기 <span class="bob">↓</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 선언 — 스크롤에 맞춰 글자가 켜진다 -->
+  <section id="manifesto" class="pin" data-scene="manifesto" style="--len: 300vh">
+    <div class="stage">
+      <p class="eyebrow">Who we are</p>
+      <p class="mani" id="mani">다듬기 전의 아이디어를 날것 그대로 굴려 봅니다. 재밌으면 남기고, 아니면 미련 없이 버립니다. 그렇게 끝까지 살아남은 것들로 게임을 만듭니다. 우리는 작은 팀, 날것들입니다.</p>
+      <div class="mani-count"><b id="mani-n">0</b><span>%</span></div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span>RAW IDEAS</span><span class="dot">●</span><span class="o">SMALL TEAM</span><span class="dot">●</span><span class="y">BIG FLIP</span><span class="dot">●</span><span>날것 그대로</span><span class="dot">●</span>
+      <span>RAW IDEAS</span><span class="dot">●</span><span class="o">SMALL TEAM</span><span class="dot">●</span><span class="y">BIG FLIP</span><span class="dot">●</span><span>날것 그대로</span><span class="dot">●</span>
+    </div>
+  </div>
+
+  <!-- 3. 팀 — 세로 스크롤이 가로로 흐른다 -->
+  <section id="crew" class="pin" data-scene="crew" style="--len: 420vh">
+    <div class="stage crew-stage">
+      <div class="crew-head">
+        <p class="eyebrow">The crew</p>
+        <h2 class="big">네 명이<br>굽고 있어요</h2>
+      </div>
+      <div class="crew-track" id="crew-track">
+        <article class="member" style="--c1:#ffc83d; --c2:#ff7a3d">
+          <div class="photo"><span class="ini">Ki</span><span class="tag">임시 사진</span></div>
+          <div class="who"><span class="no">01</span><h3>Kiriko</h3><p class="en">Elephant</p></div>
+          <p class="role">Director · Programmer</p>
+          <p class="line">방향을 잡고, 코드를 짜고, 스토어에 올립니다.</p>
+        </article>
+        <article class="member" style="--c1:#ff3b5c; --c2:#b9a8d6">
+          <div class="photo"><span class="ini">Du</span><span class="tag">임시 사진</span></div>
+          <div class="who"><span class="no">02</span><h3>Dune</h3><p class="en">Hamster</p></div>
+          <p class="role">Art · Story · UI</p>
+          <p class="line">그림과 이야기, 손에 닿는 화면을 만듭니다.</p>
+        </article>
+        <article class="member" style="--c1:#5ce1c6; --c2:#3d7bff">
+          <div class="photo"><span class="ini">Ca</span><span class="tag">임시 사진</span></div>
+          <div class="who"><span class="no">03</span><h3>Capy</h3><p class="en">Fennec Fox</p></div>
+          <p class="role">Programmer</p>
+          <p class="line">게임이 돌아가게, 끝까지 버그를 잡습니다.</p>
+        </article>
+        <article class="member" style="--c1:#b9a8d6; --c2:#ffc83d">
+          <div class="photo"><span class="ini">Ko</span><span class="tag">임시 사진</span></div>
+          <div class="who"><span class="no">04</span><h3>Kora</h3><p class="en">Water Deer</p></div>
+          <p class="role">New Crew</p>
+          <p class="line">가장 최근에 합류한 날것. 함께 반죽 중입니다.</p>
+        </article>
+        <div class="member end">
+          <p>그리고<br>다음 날것은<br><b>당신?</b></p>
+          <a class="btn" href="#contact">연락하기 <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="crew-progress"><i id="crew-bar"></i></div>
+    </div>
+  </section>
+
+  <!-- 4. 프로젝트 -->
+  <section id="projects" class="pin" data-scene="projects" style="--len: 260vh">
+    <div class="stage proj-stage">
+      <div class="proj-head">
+        <p class="eyebrow">Projects</p>
+        <h2 class="big">지금 굽는 것,<br>다음에 구울 것</h2>
+        <p class="proj-count"><b id="proj-n">01</b> / 03</p>
+      </div>
+      <div class="proj-grid">
+        <a class="proj live" href="projects/pancake-tycoon/" style="--i:0">
+          <div class="thumb pt">
+            <div class="pan"></div>
+            <img src="assets/img/duck.png" alt="Pancake Tycoon 의 오리 주인공">
+          </div>
+          <div class="meta">
+            <span class="no">01</span>
+            <h3>Pancake Tycoon</h3>
+            <p>오리가 굽는 B급 팬케이크 타이쿤</p>
+            <span class="state live">개발 중 · 출시 준비</span>
+          </div>
+          <span class="go" aria-hidden="true">→</span>
+        </a>
+        <div class="proj soon" aria-disabled="true" style="--i:1">
+          <div class="thumb ch"><div class="eye"><i></i></div></div>
+          <div class="meta">
+            <span class="no">02</span>
+            <h3>Circle Horror</h3>
+            <p>&nbsp;</p>
+            <span class="state">Coming Soon</span>
+          </div>
+          <button class="go" disabled aria-label="Circle Horror — Coming Soon">✕</button>
+        </div>
+        <div class="proj soon" aria-disabled="true" style="--i:2">
+          <div class="thumb dp"><span>!</span><span>!</span><span>!</span></div>
+          <div class="meta">
+            <span class="no">03</span>
+            <h3>Duck Please!</h3>
+            <p>&nbsp;</p>
+            <span class="state">Coming Soon</span>
+          </div>
+          <button class="go" disabled aria-label="Duck Please! — Coming Soon">✕</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 연락 -->
+  <section id="contact" class="contact">
+    <p class="eyebrow" data-reveal>Contact</p>
+    <h2 class="huge" data-reveal style="--d:.1s">같이<br><span class="y">놀아요.</span></h2>
+    <div class="contact-row" data-reveal style="--d:.2s">
+      <a class="btn solid" href="https://discord.gg/7uwZD7Hkh" target="_blank" rel="noopener">디스코드 들어오기 <span class="arr">→</span></a>
+    </div>
+    <ul class="mails" data-reveal style="--d:.3s">
+    </ul>
+  </section>
+
+  <footer class="footer">
+    <span>© 2026 NALENC · 날것들</span>
+    <span class="sp"></span>
+    <span>nalenc.kr</span>
+  </footer>
+
+  <script src="assets/js/reel.js"></script>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>
