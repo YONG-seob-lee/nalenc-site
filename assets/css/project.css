@@ -183,3 +183,14 @@
 @media (max-width: 520px) {
   .nav .links a[href="#video"], .nav .links a[href="#world"] { display: none; }
 }
+
+/* 웹 체험판 */
+.try-sub { margin: 16px 0 0; max-width: 640px; color: var(--text-2, #c9bfdc); line-height: 1.6; }
+.playframe .poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.45) saturate(.9); }
+.playframe .play-cover { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; text-align: center; padding: 16px; }
+.playframe .play-cover .btn { font-size: 18px; padding: 16px 28px; }
+.playframe .play-note { font-family: var(--mono, monospace); font-size: 12px; color: var(--text, #f6f1ff); opacity: .8; }
+.playframe iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #000; }
+.playframe.playing .poster, .playframe.playing .play-cover { display: none; }
+.playframe .play-fs { position: absolute; right: 12px; bottom: 12px; z-index: 2; width: 40px; height: 40px; border-radius: 999px; border: 1px solid var(--line-2); background: rgba(13, 8, 22, .7); color: var(--text, #f6f1ff); font-size: 18px; cursor: pointer; }
+.playframe .play-fs:hover { background: var(--text, #f6f1ff); color: var(--ink, #0d0816); }

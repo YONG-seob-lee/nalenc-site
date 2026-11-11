@@ -185,6 +185,23 @@
     </div>
   </section>
 
+  <!-- 웹 체험판 — 버튼을 눌러야 게임 파일(수십 MB)을 받는다. 빌드는 pancake-tycoon 의 "Web Demo" 내보내기(scenes/web_demo.tscn) -->
+  <section class="gameplay tryit" id="try">
+    <div class="gp-head">
+      <p class="eyebrow" data-reveal>Try it</p>
+      <h2 class="gp-title" data-reveal style="--d:.08s">직접, 구워 볼래요?</h2>
+      <p class="try-sub" data-reveal style="--d:.12s">붓고 · 굽고 · 뒤집기. 반죽 팔레트 전부 열어 뒀어요. 먼저 부은 곳일수록 진하게 익고, 뒤집으면 좌우가 바뀌어요.</p>
+    </div>
+    <div class="vframe playframe" id="playframe" data-src="../../play/pancake-tycoon/index.html" data-reveal style="--d:.16s">
+      <img class="poster" src="../../assets/img/pancake-tycoon/screenshot_03_kitchen.jpg" alt="" loading="lazy">
+      <div class="play-cover">
+        <button class="btn solid" id="play-start" type="button">굽기 시작 <span class="arr">→</span></button>
+        <span class="play-note">게임 파일 약 80MB를 받아요 · 와이파이 권장</span>
+      </div>
+      <button class="play-fs" id="play-fs" type="button" hidden aria-label="전체 화면">⛶</button>
+    </div>
+  </section>
+
   <section id="contact" class="cta">
     <h2 data-reveal>소식은<br><span class="y">디스코드에서.</span></h2>
     <div class="cta-row" data-reveal style="--d:.1s">
@@ -232,6 +249,27 @@
         imgs[i].classList.remove("on"); i = (i + 1) % imgs.length; imgs[i].classList.add("on");
         f.style.setProperty("--slide", i);
       }, 3200);
+    })();
+    // 웹 체험판 — 누르면 그때 게임을 불러온다
+    (() => {
+      const f = document.getElementById("playframe");
+      if (!f) return;
+      const fs = document.getElementById("play-fs");
+      document.getElementById("play-start").addEventListener("click", () => {
+        const ifr = document.createElement("iframe");
+        ifr.src = f.dataset.src;
+        ifr.title = "Pancake Tycoon 굽기 체험";
+        ifr.allow = "autoplay; fullscreen";
+        ifr.allowFullscreen = true;
+        f.appendChild(ifr);
+        f.classList.add("playing");
+        fs.hidden = false;
+        ifr.addEventListener("load", () => ifr.focus());
+      });
+      fs.addEventListener("click", () => {
+        const el = f.querySelector("iframe") || f;
+        (el.requestFullscreen || el.webkitRequestFullscreen || (() => {})).call(el);
+      });
     })();
     // 스크린샷 크게 보기
     (() => {
