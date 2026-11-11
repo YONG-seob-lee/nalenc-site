@@ -17,11 +17,12 @@
   const C = { ink: "#0d0816", ink2: "#171024", ink3: "#241a38", text: "#f6f1ff", text3: "#8b80a3", butter: "#ffc83d", berry: "#ff3b5c", lilac: "#b9a8d6", mint: "#5ce1c6", batter: "#ffefd2", pan: "#2a2233", gold: "#e59a3a", gold2: "#ffd98a" };
   const F = { disp: '"Unbounded", sans-serif', kr: '"Black Han Sans", "Noto Sans KR", sans-serif', mono: '"JetBrains Mono", monospace' };
   const CREW = [
-    { name: "Kiriko", ini: "Ki", role: "DIRECTOR · PROGRAMMER", c1: "#ffc83d", c2: "#ff7a3d" },
-    { name: "Dune", ini: "Du", role: "ART · STORY · UI", c1: "#ff3b5c", c2: "#b9a8d6" },
-    { name: "Capy", ini: "Ca", role: "PROGRAMMER", c1: "#5ce1c6", c2: "#3d7bff" },
-    { name: "Kora", ini: "Ko", role: "NEW CREW", c1: "#b9a8d6", c2: "#ffc83d" },
+    { name: "Kiriko", ini: "Ki", img: "kiriko", role: "DIRECTOR · PROGRAMMER", c1: "#ffc83d", c2: "#ff7a3d" },
+    { name: "Dune", ini: "Du", img: "dune", role: "ART · STORY · UI", c1: "#ff3b5c", c2: "#b9a8d6" },
+    { name: "Capy", ini: "Ca", img: "capy", role: "PROGRAMMER", c1: "#5ce1c6", c2: "#3d7bff" },
+    { name: "Kora", ini: "Ko", img: "kora", role: "DESIGNER · ANIMATION", c1: "#b9a8d6", c2: "#ffc83d" },
   ];
+  CREW.forEach((m) => { m.im = new Image(); m.im.onload = () => (dirty = true); m.im.src = `assets/img/crew/${m.img}.png`; });
   const duck = new Image();
   duck.src = (document.querySelector('link[rel="icon"]')?.getAttribute("href")) || "assets/img/duck.png";
   duck.onload = () => (dirty = true);
@@ -234,7 +235,13 @@
       ctx.strokeStyle = m.c1; ctx.globalAlpha = 0.6 * (1 - om); ctx.lineWidth = 1.2; ctx.setLineDash([U * 0.8, U * 1.2]);
       ctx.beginPath(); ctx.arc(0, 0, rr + U * 1.6, 0, TAU); ctx.stroke(); ctx.restore();
       ctx.globalAlpha = 1;
-      txt(m.ini, x, y + rr * 0.05, { size: rr * 0.62, fam: F.kr, color: C.ink, a: 0.85 * (1 - shrink) });
+      if (m.im.complete && m.im.naturalWidth) {
+        const iw = m.im.naturalWidth, ih = m.im.naturalHeight, ks = (rr * 1.5) / Math.max(iw, ih);
+        ctx.save(); ctx.beginPath(); ctx.arc(x, y, rr, 0, TAU); ctx.clip();
+        ctx.globalAlpha = 1 - shrink;
+        ctx.drawImage(m.im, x - (iw * ks) / 2, y - (ih * ks) / 2 + rr * 0.08, iw * ks, ih * ks);
+        ctx.restore(); ctx.globalAlpha = 1;
+      } else txt(m.ini, x, y + rr * 0.05, { size: rr * 0.62, fam: F.kr, color: C.ink, a: 0.85 * (1 - shrink) });
       // 이름 · 역할
       const la = 1 - seg(u, 3.5, 3.8);
       if (la > 0) {

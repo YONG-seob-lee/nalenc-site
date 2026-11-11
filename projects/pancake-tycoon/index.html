@@ -23,10 +23,11 @@
   <div class="cursor-ring" aria-hidden="true"></div>
 
   <header class="nav">
-    <a class="logo" href="../../">NALENC<small>날것들</small></a>
+    <a class="logo" href="../../index.html">NALENC<small>날것들</small></a>
     <nav class="links">
-      <a href="../../#projects">← Projects</a>
-      <a href="#play">Play</a>
+      <a href="../../index.html#projects">← Projects</a>
+      <a href="#video">Play</a>
+      <a href="#world">World</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -52,7 +53,7 @@
       </div>
       <img class="duck" src="../../assets/img/duck.png" alt="">
     </div>
-    <a class="hero-down" href="#play">스크롤 <span class="bob">↓</span></a>
+    <a class="hero-down" href="#video">스크롤 <span class="bob">↓</span></a>
   </section>
 
   <div class="marquee" aria-hidden="true">
@@ -61,6 +62,50 @@
       <span>POUR</span><span class="dot">●</span><span class="o">FLIP</span><span class="dot">●</span><span class="y">STACK</span><span class="dot">●</span><span>꽥!</span><span class="dot">●</span><span>SELL</span><span class="dot">●</span>
     </div>
   </div>
+
+  <!-- 플레이 영상 — data-video 에 파일 경로를 넣으면 영상, 비어 있으면 스크린샷이 넘어간다 -->
+  <section class="gameplay" id="video">
+    <div class="gp-head">
+      <p class="eyebrow" data-reveal>Gameplay</p>
+      <h2 class="gp-title" data-reveal style="--d:.08s">한 판, 구경해 볼래요?</h2>
+    </div>
+    <div class="vframe" id="vframe" data-video="" data-reveal style="--d:.16s">
+      <video muted loop playsinline preload="metadata" hidden></video>
+      <div class="slides">
+          <img src="../../assets/img/pancake-tycoon/screenshot_01_title.jpg" alt="" loading="lazy" class="on">
+          <img src="../../assets/img/pancake-tycoon/screenshot_02_counter.jpg" alt="" loading="lazy">
+          <img src="../../assets/img/pancake-tycoon/screenshot_03_kitchen.jpg" alt="" loading="lazy">
+          <img src="../../assets/img/pancake-tycoon/screenshot_04_farm_garden.jpg" alt="" loading="lazy">
+          <img src="../../assets/img/pancake-tycoon/screenshot_05_farm_house.jpg" alt="" loading="lazy">
+          <img src="../../assets/img/pancake-tycoon/screenshot_06_village.jpg" alt="" loading="lazy">
+          <img src="../../assets/img/pancake-tycoon/screenshot_07_material_store.jpg" alt="" loading="lazy">
+          <img src="../../assets/img/pancake-tycoon/screenshot_08_sleep_phone.jpg" alt="" loading="lazy">
+      </div>
+      <span class="vtag" id="vtag">● PLAY FOOTAGE — 준비 중</span>
+      <div class="vbar"><i></i></div>
+    </div>
+  </section>
+
+  <!-- 세계관 — 스크롤에 맞춰 문장이 넘어가고 가운데 모양이 바뀐다 -->
+  <section id="world" class="pin world" data-scene="world" style="--len: 420vh">
+    <div class="stage world-stage">
+      <div class="world-art" aria-hidden="true">
+        <div class="w-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="w-duck"><img src="../../assets/img/duck.png" alt=""></div>
+        <div class="w-tri"><b></b><i></i></div>
+        <div class="w-mix"><i class="c"></i><i class="t"></i><i class="s"></i><i class="r"></i></div>
+      </div>
+      <div class="world-text">
+        <p class="eyebrow">The world</p>
+        <div class="w-lines">
+          <article data-wstep="0"><span class="k">01</span><h2>세상의 모든 것이<br>동그래졌다.</h2><p>오래전 어떤 일 이후로. 몇 세대가 지나자, 다들 동그란 게 당연한 줄 알게 됐어요.</p></article>
+          <article data-wstep="1"><span class="k">02</span><h2>동그란 오리의<br>동그란 가게.</h2><p>연못이 잘 보이는 자리에 작은 팬케이크 가게가 문을 엽니다. 물론, 팬케이크도 동그랗죠.</p></article>
+          <article data-wstep="2"><span class="k">03</span><h2>억지로 동그란<br>두건을 쓴 손님.</h2><p>어느 날 삼각형 새가 찾아와 주문합니다. 그리고 반죽 위에 이런 말이 뜨죠. <q>자유롭게 부어 주세요.</q></p></article>
+          <article data-wstep="3"><span class="k">04</span><h2>틀을 부수는 게 아니라,<br><span class="y">내 모양을 고르는</span> 이야기.</h2><p>대놓고 말하지 않아요. 팬케이크를 구울수록, 마을이 조금씩 달라질 뿐. 꽥.</p></article>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- 하루를 스크롤로 -->
   <section id="play" class="pin story" data-scene="story" style="--len: 640vh">
@@ -86,10 +131,31 @@
           <article data-step="2"><span class="k">03 — Prep</span><h2>재료 손질</h2><p>코끼리가 코로 재료를 뿜어 올리면, 칼을 가로로 문 오리가 그어서 벱니다. 돌멩이는 베지 마세요. 깡!</p></article>
           <article data-step="3"><span class="k">04 — Farm</span><h2>농장 돌보기</h2><p>텃밭에 물을 주고, 젖소와 닭이 놓고 간 우유와 달걀을 주워 창고로. 내일 장사는 오늘 준비해요.</p></article>
           <article data-step="4"><span class="k">05 — Close</span><h2>하루 마감</h2><p>OPEN 간판이 빙글 돌아 CLOSE. 하루 매출 영수증이 내려오면 “정산 완료” 도장을 쾅.</p></article>
-          <article data-step="5"><span class="k">06 — Story</span><h2>둥근 것들의 마을</h2><p>연못이 잘 보이는 작은 팬케이크 가게. 이상하게도, 아무도 오리를 의심하지 않아요. 꽥.</p></article>
+          <article data-step="5"><span class="k">06 — Night</span><h2>하루 끝, 휴대폰</h2><p>집에 들어가면 휴대폰이 올라와요. 가계부, 손님 후기, 그리고 팬케이크 탑 쌓기 미니게임까지.</p></article>
         </div>
         <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i></div>
       </div>
+    </div>
+  </section>
+
+  <!-- 스크린샷 — 세로 스크롤이 가로로 흐른다 -->
+  <section id="shots" class="pin" data-scene="gallery" style="--len: 380vh">
+    <div class="stage gal-stage">
+      <div class="gal-head">
+        <p class="eyebrow">Screenshots</p>
+        <h2 class="gal-title">가게 안을<br>둘러보세요</h2>
+      </div>
+      <div class="gal-track" data-track>
+        <figure class="shot" data-full="../../assets/img/pancake-tycoon/screenshot_01_title.jpg"><img src="../../assets/img/pancake-tycoon/screenshot_01_title.jpg" alt="Pancake Tycoon 스크린샷 — 타이틀" loading="lazy"><figcaption><span>01</span>타이틀</figcaption></figure>
+        <figure class="shot" data-full="../../assets/img/pancake-tycoon/screenshot_02_counter.jpg"><img src="../../assets/img/pancake-tycoon/screenshot_02_counter.jpg" alt="Pancake Tycoon 스크린샷 — 카운터 — 손님 받기" loading="lazy"><figcaption><span>02</span>카운터 — 손님 받기</figcaption></figure>
+        <figure class="shot" data-full="../../assets/img/pancake-tycoon/screenshot_03_kitchen.jpg"><img src="../../assets/img/pancake-tycoon/screenshot_03_kitchen.jpg" alt="Pancake Tycoon 스크린샷 — 주방 — 붓고 뒤집기" loading="lazy"><figcaption><span>03</span>주방 — 붓고 뒤집기</figcaption></figure>
+        <figure class="shot" data-full="../../assets/img/pancake-tycoon/screenshot_04_farm_garden.jpg"><img src="../../assets/img/pancake-tycoon/screenshot_04_farm_garden.jpg" alt="Pancake Tycoon 스크린샷 — 농장 — 텃밭" loading="lazy"><figcaption><span>04</span>농장 — 텃밭</figcaption></figure>
+        <figure class="shot" data-full="../../assets/img/pancake-tycoon/screenshot_05_farm_house.jpg"><img src="../../assets/img/pancake-tycoon/screenshot_05_farm_house.jpg" alt="Pancake Tycoon 스크린샷 — 농장 — 집 앞" loading="lazy"><figcaption><span>05</span>농장 — 집 앞</figcaption></figure>
+        <figure class="shot" data-full="../../assets/img/pancake-tycoon/screenshot_06_village.jpg"><img src="../../assets/img/pancake-tycoon/screenshot_06_village.jpg" alt="Pancake Tycoon 스크린샷 — 마을 가는 길" loading="lazy"><figcaption><span>06</span>마을 가는 길</figcaption></figure>
+        <figure class="shot" data-full="../../assets/img/pancake-tycoon/screenshot_07_material_store.jpg"><img src="../../assets/img/pancake-tycoon/screenshot_07_material_store.jpg" alt="Pancake Tycoon 스크린샷 — 재료 상점" loading="lazy"><figcaption><span>07</span>재료 상점</figcaption></figure>
+        <figure class="shot" data-full="../../assets/img/pancake-tycoon/screenshot_08_sleep_phone.jpg"><img src="../../assets/img/pancake-tycoon/screenshot_08_sleep_phone.jpg" alt="Pancake Tycoon 스크린샷 — 하루 끝 — 휴대폰" loading="lazy"><figcaption><span>08</span>하루 끝 — 휴대폰</figcaption></figure>
+      </div>
+      <div class="crew-progress"><i data-bar></i></div>
     </div>
   </section>
 
@@ -107,7 +173,7 @@
       <li><b>Kiriko</b><span>Director · Programmer</span></li>
       <li><b>Dune</b><span>Art · Story · UI</span></li>
       <li><b>Capy</b><span>Programmer</span></li>
-      <li><b>Kora</b><span>New Crew</span></li>
+      <li><b>Kora</b><span>Designer · Animation · Concept Art</span></li>
     </ul>
   </section>
 
@@ -123,14 +189,16 @@
     <h2 data-reveal>소식은<br><span class="y">디스코드에서.</span></h2>
     <div class="cta-row" data-reveal style="--d:.1s">
       <a class="btn solid" href="https://discord.gg/7uwZD7Hkh" target="_blank" rel="noopener">디스코드 들어오기 <span class="arr">→</span></a>
-      <a class="btn" href="../../#projects">모든 프로젝트 <span class="arr">→</span></a>
+      <a class="btn" href="../../index.html#projects">모든 프로젝트 <span class="arr">→</span></a>
     </div>
   </section>
+
+  <div class="lightbox" id="lightbox" hidden><img alt=""><button class="rb" aria-label="닫기">✕</button></div>
 
   <footer class="footer">
     <span>© 2026 NALENC · 날것들</span>
     <span class="sp"></span>
-    <a href="../../">nalenc.kr</a>
+    <a href="../../index.html">nalenc.kr</a>
   </footer>
 
   <script src="../../assets/js/site.js"></script>
@@ -144,6 +212,36 @@
         art.style.setProperty("--mx", x.toFixed(3));
         art.style.setProperty("--my", y.toFixed(3));
       });
+    })();
+    // 플레이 영상 / 스크린샷 넘기기
+    (() => {
+      const f = document.getElementById("vframe");
+      if (!f) return;
+      const src = f.dataset.video, v = f.querySelector("video");
+      if (src) {
+        v.src = src; v.hidden = false; f.querySelector(".slides").hidden = true;
+        document.getElementById("vtag").textContent = "● PLAY FOOTAGE";
+        new IntersectionObserver((es) => es[0].isIntersecting ? v.play().catch(() => {}) : v.pause(), { threshold: 0.3 }).observe(f);
+        return;
+      }
+      const imgs = [...f.querySelectorAll(".slides img")];
+      let i = 0, on = false;
+      new IntersectionObserver((es) => (on = es[0].isIntersecting), { threshold: 0.2 }).observe(f);
+      setInterval(() => {
+        if (!on || document.hidden) return;
+        imgs[i].classList.remove("on"); i = (i + 1) % imgs.length; imgs[i].classList.add("on");
+        f.style.setProperty("--slide", i);
+      }, 3200);
+    })();
+    // 스크린샷 크게 보기
+    (() => {
+      const lb = document.getElementById("lightbox");
+      if (!lb) return;
+      const show = (src) => { lb.querySelector("img").src = src; lb.hidden = false; };
+      const hide = () => (lb.hidden = true);
+      document.querySelectorAll(".shot").forEach((s) => s.addEventListener("click", () => show(s.dataset.full)));
+      lb.addEventListener("click", hide);
+      addEventListener("keydown", (e) => { if (e.key === "Escape") hide(); });
     })();
   </script>
 </body>

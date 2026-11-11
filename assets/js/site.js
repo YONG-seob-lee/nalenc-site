@@ -55,6 +55,21 @@
       });
       if (projN) projN.textContent = String(Math.max(1, shown)).padStart(2, "0");
     },
+    world(p, el) {
+      const items = [...el.querySelectorAll("[data-wstep]")];
+      const idx = Math.min(items.length - 1, Math.floor(seg(p, 0, 0.999) * items.length));
+      items.forEach((a, i) => a.classList.toggle("on", i === idx));
+      el.dataset.wstep = idx;
+    },
+    gallery(p, el) {
+      const track = el.querySelector("[data-track]"), bar = el.querySelector("[data-bar]");
+      if (!track) return;
+      const stage = track.parentElement;
+      const max = Math.max(0, track.scrollWidth - stage.clientWidth + parseFloat(getComputedStyle(stage).paddingLeft) * 2);
+      const q = seg(p, 0.06, 0.94);
+      track.style.transform = `translate3d(${-max * q}px,0,0)`;
+      if (bar) bar.style.transform = `scaleX(${q})`;
+    },
     story(p, el) {
       const n = steps.length;
       if (!n) return;

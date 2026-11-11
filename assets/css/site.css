@@ -49,7 +49,7 @@ button { font: inherit; color: inherit; }
 .nav .logo { font-family: var(--display); font-weight: 900; letter-spacing: .04em; font-size: 18px; }
 .nav .logo small { font-family: var(--kr); font-weight: 700; font-size: 11px; letter-spacing: 0; margin-left: 8px; opacity: .7; }
 .nav .links { margin-left: auto; display: flex; gap: clamp(14px, 3vw, 32px); font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; }
-.nav .links a { position: relative; }
+.nav .links a { position: relative; white-space: nowrap; }
 .nav .links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .35s var(--ease); }
 .nav .links a:hover::after { transform: scaleX(1); transform-origin: left; }
 .scroll-bar { position: fixed; top: 0; left: 0; height: 2px; width: 100%; z-index: 60; background: var(--butter); transform-origin: left; transform: scaleX(var(--sp, 0)); }

@@ -39,8 +39,9 @@
 .member:hover { border-color: var(--line-2); transform: translateY(-6px); }
 .member .photo { position: relative; aspect-ratio: 4 / 4.2; border-radius: 16px; overflow: hidden; margin-bottom: 10px;
   background: radial-gradient(circle at 30% 25%, var(--c1), transparent 60%), radial-gradient(circle at 75% 80%, var(--c2), transparent 55%), var(--ink-3); }
-.member .photo::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0, 0, 0, .12) 0 2px, transparent 2px 4px); mix-blend-mode: multiply; }
-.member .ini { position: absolute; left: 14px; bottom: 6px; font-family: var(--kr-display); font-size: clamp(64px, 7vw, 96px); line-height: 1; color: rgba(13, 8, 22, .82); }
+.member .photo::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0, 0, 0, .08) 0 2px, transparent 2px 4px); mix-blend-mode: multiply; }
+.member .photo img { position: absolute; left: 50%; top: 54%; width: 74%; height: 74%; object-fit: contain; transform: translate(-50%, -50%); filter: drop-shadow(0 12px 14px rgba(13, 8, 22, .35)); transition: transform .6s var(--ease); z-index: 1; }
+.member:hover .photo img { transform: translate(-50%, -54%) rotate(-4deg) scale(1.04); }
 .member .tag { position: absolute; right: 10px; top: 10px; font-family: var(--mono); font-size: 10px; letter-spacing: .1em; padding: 3px 8px; border-radius: 999px; background: rgba(13, 8, 22, .55); color: var(--text-2); z-index: 1; }
 .member .who { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
 .member .no { font-family: var(--mono); font-size: 12px; color: var(--text-3); }

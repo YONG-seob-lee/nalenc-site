@@ -17,7 +17,8 @@ NALENC(날것들) 팀 소개 사이트 — https://nalenc.kr (GitHub Pages)
 
 ## 자주 고칠 곳
 
-- **팀원 사진**: `index.html`의 `.member .photo`가 지금은 임시(색 + 이름). 사진을 `assets/img/`에 넣고 `<img>`로 바꾸면 됩니다.
+- **팀원 이미지**: `assets/img/crew/*.png`(Pancake Tycoon 캐릭터). 바꾸려면 같은 이름으로 덮어쓰기 — 카드와 쇼릴이 같이 바뀝니다.
+- **플레이 영상**: `assets/video/`에 mp4 를 넣고 `projects/pancake-tycoon/index.html`의 `data-video=""`에 경로(`../../assets/video/파일.mp4`)를 적으면 스크린샷 슬라이드 대신 영상이 나옵니다. 20MB 이하 권장.
 - **역할 · 소개 문구**: `index.html`의 `.member`, 쇼릴 속 역할은 `reel.js` 맨 위 `CREW`.
 - **프로젝트 추가 · 공개**: `index.html`의 `.proj.soon` 카드를 `<a class="proj live" href="projects/<이름>/">`로 바꾸고 `projects/<이름>/index.html`을 만듭니다.
 - **스크롤 구간 길이**: 섹션의 `style="--len: 300vh"`.
