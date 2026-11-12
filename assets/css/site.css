@@ -64,12 +64,13 @@ button { font: inherit; color: inherit; }
 .btn .arr { transition: transform .3s var(--ease); }
 .btn:hover .arr { transform: translateX(4px); }
 
-[data-reveal] { opacity: 0; transform: translateY(40px); transition: opacity 1s var(--ease), transform 1s var(--ease); transition-delay: var(--d, 0s); }
-[data-reveal].in { opacity: 1; transform: none; }
+/* 숨겼다 나타나기는 JS 가 돌 때만 — 꺼져 있으면 그냥 보인다 */
+.js [data-reveal] { opacity: 0; transform: translateY(40px); transition: opacity 1s var(--ease), transform 1s var(--ease); transition-delay: var(--d, 0s); }
+.js [data-reveal].in { opacity: 1; transform: none; }
 
 /* 고정 무대 공통: 섹션 높이 = --len, 안쪽 .stage 가 화면에 붙어 있음 */
 .pin { position: relative; height: var(--len, 300vh); }
-.pin .stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; padding: 96px var(--gutter) 48px; display: flex; flex-direction: column; }
+.pin .stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; overflow: clip; padding: 96px var(--gutter) 48px; display: flex; flex-direction: column; }
 /* 흐르는 띠 */
 .marquee { overflow: hidden; border-block: 1px solid var(--line); padding: 18px 0; background: var(--ink-2); }
 .marquee .track { display: flex; width: max-content; gap: 48px; animation: mq 28s linear infinite; transform: skewX(calc(var(--skew, 0) * 1deg)); }
@@ -84,7 +85,7 @@ button { font: inherit; color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001s !important; animation-iteration-count: 1 !important; transition-duration: .001s !important; }
-  [data-reveal] { opacity: 1; transform: none; }
+  .js [data-reveal] { opacity: 1; transform: none; }
 }
 @media (max-width: 640px) {
   .nav { gap: 12px; padding-top: 14px; padding-bottom: 14px; }

@@ -26,6 +26,7 @@
 #manifesto .stage { justify-content: center; }
 .mani { font-family: var(--kr-display); font-size: clamp(30px, 5.2vw, 76px); line-height: 1.22; margin: 24px 0 0; max-width: 18em; word-break: keep-all; }
 .mani .w { color: rgba(246, 241, 255, .12); transition: color .25s; }
+html:not(.js) .mani { color: var(--text); }
 .mani .w.on { color: var(--text); }
 .mani .w.hl.on { color: var(--butter); }
 .mani-count { position: absolute; right: var(--gutter); bottom: 40px; font-family: var(--display); font-weight: 900; font-size: clamp(48px, 9vw, 140px); line-height: 1; color: transparent; -webkit-text-stroke: 1px var(--text-3); display: flex; align-items: flex-start; }

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>길을 잃었어요 — NALENC</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0d0816">
+  <link rel="icon" href="/assets/img/duck.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;700;900&family=Unbounded:wght@400;700;900&display=swap">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <style>
+    .lost { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 22px; padding: 96px var(--gutter) 48px; }
+    .lost .code { font-family: var(--display); font-weight: 900; font-size: clamp(96px, 22vw, 280px); line-height: .9; margin: 0; letter-spacing: -.03em; }
+    .lost .code span { color: var(--butter); }
+    .lost h1 { font-family: var(--kr-display); font-weight: 400; font-size: clamp(32px, 5vw, 64px); line-height: 1.08; margin: 0; }
+    .lost p { margin: 0; color: var(--text-2); max-width: 32em; }
+    .lost img { width: clamp(96px, 14vw, 160px); transform: rotate(180deg); }
+    .lost .row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <a class="logo" href="/">NALENC<small>날것들</small></a>
+  </header>
+
+  <main class="lost">
+    <img src="/assets/img/duck.png" alt="뒤집힌 오리">
+    <p class="code">4<span>0</span>4</p>
+    <h1>여긴 아무것도<br>안 굽고 있어요.</h1>
+    <p>주소가 바뀌었거나, 아직 굽지 않은 페이지예요. 꽥.</p>
+    <div class="row">
+      <a class="btn solid" href="/">처음으로 <span class="arr">→</span></a>
+      <a class="btn" href="/#projects">프로젝트 보기 <span class="arr">→</span></a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 NALENC · 날것들</span>
+    <span class="sp"></span>
+    <a href="/">nalenc.kr</a>
+  </footer>
+</body>
+</html>
