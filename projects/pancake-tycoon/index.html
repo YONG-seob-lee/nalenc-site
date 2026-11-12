@@ -209,6 +209,7 @@
         <span class="play-note">게임 파일 약 80MB를 받아요 · 와이파이 권장</span>
       </div>
       <button class="play-fs" id="play-fs" type="button" hidden aria-label="전체 화면">⛶</button>
+      <div class="rotate-hint" aria-hidden="true"><b>📱</b>휴대폰을 가로로 돌려 주세요</div>
     </div>
   </section>
 
@@ -270,6 +271,44 @@
       const f = document.getElementById("playframe");
       if (!f) return;
       const fs = document.getElementById("play-fs");
+      // 휴대폰 · 태블릿(손가락 입력)에서는 시작하자마자 전체 화면 + 가로 모드로 연다
+      const touch = matchMedia("(pointer: coarse)").matches;
+      const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement;
+      const isFull = () => fsEl() === f || f.classList.contains("fake-fs");
+      const sync = () => {
+        const on = isFull();
+        f.classList.toggle("full", on);
+        fs.textContent = on ? "✕" : "⛶";
+        fs.setAttribute("aria-label", on ? "전체 화면 닫기" : "전체 화면");
+        document.documentElement.style.overflow = f.classList.contains("fake-fs") ? "hidden" : "";
+        if (!on) { try { screen.orientation.unlock(); } catch (e) {} }
+      };
+      const enter = async () => {
+        const req = f.requestFullscreen || f.webkitRequestFullscreen;
+        let real = false;
+        if (req) {
+          try {
+            // 응답이 없는 브라우저도 있어서 1.5초까지만 기다린다
+            await Promise.race([req.call(f, { navigationUI: "hide" }), new Promise((_, no) => setTimeout(no, 1500))]);
+            real = true;
+          } catch (e) { real = fsEl() === f; }
+        }
+        if (!real) f.classList.add("fake-fs");   // iPhone Safari 등 — 화면을 꽉 채우는 것으로 대신한다
+        if (touch && screen.orientation && screen.orientation.lock) {
+          try { await screen.orientation.lock("landscape"); } catch (e) {}   // 안 되면 '가로로 돌려 주세요' 안내가 뜬다
+        }
+        sync();
+        const ifr = f.querySelector("iframe");
+        if (ifr) ifr.focus();
+      };
+      const leave = () => {
+        if (fsEl()) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+        f.classList.remove("fake-fs");
+        sync();
+      };
+      document.addEventListener("fullscreenchange", sync);
+      document.addEventListener("webkitfullscreenchange", sync);
+      addEventListener("keydown", (e) => { if (e.key === "Escape" && f.classList.contains("fake-fs")) leave(); });
       document.getElementById("play-start").addEventListener("click", () => {
         const ifr = document.createElement("iframe");
         ifr.src = f.dataset.src;
@@ -280,11 +319,9 @@
         f.classList.add("playing");
         fs.hidden = false;
         ifr.addEventListener("load", () => ifr.focus());
+        if (touch) enter();
       });
-      fs.addEventListener("click", () => {
-        const el = f.querySelector("iframe") || f;
-        (el.requestFullscreen || el.webkitRequestFullscreen || (() => {})).call(el);
-      });
+      fs.addEventListener("click", () => (isFull() ? leave() : enter()));
     })();
     // 스크린샷 크게 보기 — 클릭 · Enter/Space 로 열고, ← → 로 넘기고, Esc 로 닫는다
     (() => {
