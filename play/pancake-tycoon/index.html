@@ -109,6 +109,38 @@ body {
 			<div id="status-notice"></div>
 		</div>
 
+		<script>
+// 백그라운드로 가면 소리를 멈추고, 돌아오면 다시 켠다 — Godot 웹 엔진이 직접 하지 않아서 여기서 한다.
+// Godot 에서 다시 내보내면 이 부분이 사라지니, 내보내기 설정 HTML > Head Include 에도 넣어 둘 것.
+(function () {
+	const AC = window.AudioContext || window.webkitAudioContext;
+	if (!AC) return;
+	const ctxs = [];
+	const paused = new WeakSet();
+	function Wrapped(opts) {
+		const ctx = new AC(opts);
+		ctxs.push(ctx);
+		return ctx;
+	}
+	Wrapped.prototype = AC.prototype;
+	window.AudioContext = Wrapped;
+	if (window.webkitAudioContext) window.webkitAudioContext = Wrapped;
+	function sync() {
+		const hidden = document.visibilityState === 'hidden';
+		ctxs.forEach(function (ctx) {
+			if (hidden) {
+				if (ctx.state === 'running') { paused.add(ctx); ctx.suspend(); }
+			} else if (paused.has(ctx)) {
+				paused.delete(ctx);
+				ctx.resume();
+			}
+		});
+	}
+	document.addEventListener('visibilitychange', sync);
+	window.addEventListener('pagehide', function () { ctxs.forEach(function (ctx) { if (ctx.state === 'running') { paused.add(ctx); ctx.suspend(); } }); });
+	window.addEventListener('pageshow', sync);
+}());
+		</script>
 		<script src="index.js"></script>
 		<script>
 const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":41625956,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
