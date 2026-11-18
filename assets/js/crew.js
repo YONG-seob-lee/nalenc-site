@@ -9,7 +9,7 @@
     dune: { no: "01", name: "Dune", animal: "검은 고양이 · Black Cat", role: "Art", line: "캐릭터와 화면, 손에 닿는 모든 그림을 그립니다.", say: "마감 직전…!!", color: "#ff3b5c" },
     kiriko: { no: "02", name: "Kiriko", animal: "코끼리 · Elephant", role: "Programmer", line: "방향을 잡고, 코드를 짜고, 스토어에 올립니다.", say: "빌드중…", color: "#ffc83d", art: "kiriko-card" },
     kora: { no: "03", name: "Kora", animal: "고라니 · Water Deer", role: "Animator", line: "원화를 그리고, Spine 으로 캐릭터에 숨을 불어넣습니다.", say: "", color: "#b9a8d6" },
-    capy: { no: "04", name: "Capy", animal: "회색 고양이 · Gray Cat", role: "Programmer", line: "게임이 돌아가게 코드를 짭니다.", say: "버그 잡는 중!", color: "#5ce1c6" },
+    capy: { no: "04", name: "Capy", animal: "회색 고양이 · Gray Cat", role: "Programmer", line: "게임이 돌아가게 코드를 짭니다.", say: "…계획대로다.", color: "#5ce1c6" },
   };
   const actors = Object.fromEntries([...scene.querySelectorAll(".actor")].map((a) => [a.dataset.who, a]));
   const plates = [...scene.querySelectorAll(".plate")];
@@ -26,7 +26,7 @@
     a._bt = setTimeout(() => a.classList.remove("boing"), 950);
   }
   // 선택 연출(acting) 길이 — CSS 애니메이션과 맞춘다. 여기 없는 캐릭터는 통통(boing)만
-  const ACT = { dune: 2600, kiriko: 3600, kora: 2600 };
+  const ACT = { dune: 2600, kiriko: 3600, kora: 2600, capy: 2600 };
   function act(who) {
     const a = actors[who];
     a.classList.remove("acting"); void a.offsetWidth; a.classList.add("acting");
@@ -57,7 +57,7 @@
     Object.entries(actors).forEach(([k, a]) => a.classList.toggle("sel", k === who));
     plates.forEach((p) => p.classList.toggle("sel", p.dataset.who === who));
     if (ACT[who]) act(who);
-    if (who !== "dune" && who !== "kora") boing(actors[who]);
+    if (who === "kiriko") boing(actors[who]); // 나머지는 자기 연출(acting)만
     say(who);
     if (who === "kora") {
       scene.classList.add("kora-awake");

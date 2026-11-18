@@ -111,6 +111,15 @@ html:not(.js) .mani { color: var(--text); }
   20% { transform: scale(1) translate(2%, -3%); } 26% { transform: scale(1.05) translate(-2%, 2%); } 32% { transform: scale(1) translate(2%, 2%); } 38% { transform: scale(1.05) translate(-2%, -2%); }
   44% { transform: scale(1) translate(2%, -2%); } 50% { transform: scale(1.05) translate(-2%, 2%); } 56% { transform: scale(1) translate(2%, 2%); } 62% { transform: scale(1.05) translate(-2%, -3%); }
   72% { opacity: 1; transform: scale(1); } 86%, 100% { opacity: 0; transform: scale(1.1) translateY(-20%); } }
+/* 청아(회색 고양이) — 갑자기 진지하게 깍지 끼고 티벳여우 얼굴(capy-boss.svg, 같은 크기 · 자리) */
+.actor[data-who="capy"].acting > img { visibility: hidden; }
+.actor[data-who="capy"] .act img.boss { inset: 0; width: 100%; height: 100%; animation: boss-in 2.6s ease-out both; }
+@keyframes boss-in { 0% { transform: scale(1.18); filter: brightness(1.8); } 8% { transform: scale(.96); filter: brightness(1); } 13% { transform: scale(1.02); } 18%, 100% { transform: scale(1); } }
+.actor[data-who="capy"] .act::before { content: ""; position: absolute; inset: -30% -40%; pointer-events: none; opacity: 0;
+  background: repeating-conic-gradient(from 0deg at 50% 45%, rgba(255, 255, 255, .55) 0 4deg, transparent 4deg 14deg);
+  -webkit-mask-image: radial-gradient(circle at 50% 45%, transparent 18%, #000 32%, transparent 70%); mask-image: radial-gradient(circle at 50% 45%, transparent 18%, #000 32%, transparent 70%); animation: boss-lines 2.6s ease-out both; }
+@keyframes boss-lines { 0% { opacity: 0; transform: scale(.6); } 8% { opacity: .8; } 30% { opacity: .4; transform: scale(1); } 85% { opacity: .25; } 100% { opacity: 0; } }
+
 /* 용섭(코끼리) — 코끝에서 비눗방울 */
 .actor[data-who="kiriko"] .soap i { position: absolute; left: 55%; top: 56%; width: var(--s); aspect-ratio: 1; border-radius: 50%; opacity: 0; border: 2px solid rgba(255, 255, 255, .9); box-shadow: inset 0 0 0 3px rgba(150, 210, 255, .35), inset -4px -6px 10px rgba(255, 140, 220, .45), 0 0 8px rgba(255, 255, 255, .5);
   background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, .95) 0 9%, rgba(255, 255, 255, 0) 12%),
@@ -181,6 +190,7 @@ html:not(.js) .mani { color: var(--text); }
 }
 @media (prefers-reduced-motion: reduce) {
   .actor, .actor img, .pf-art img, .zz i, .act, .act * { animation: none !important; }
+  .act::before { display: none; }
 }
 
 /* 4. 프로젝트 */
