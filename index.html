@@ -72,45 +72,45 @@
     </div>
   </div>
 
-  <!-- 3. 팀 — 세로 스크롤이 가로로 흐른다 -->
-  <section id="crew" class="pin" data-scene="crew" style="--len: 420vh">
-    <div class="stage crew-stage">
-      <div class="crew-head">
-        <p class="eyebrow">The crew</p>
-        <h2 class="big">네 명이<br>굽고 있어요</h2>
-      </div>
-      <div class="crew-track" id="crew-track">
-        <article class="member" style="--c1:#ffc83d; --c2:#ff7a3d">
-          <div class="photo"><img src="assets/img/crew/kiriko.png" alt="Kiriko — 코끼리 캐릭터" loading="lazy"><span class="tag">코끼리</span></div>
-          <div class="who"><span class="no">01</span><h3>Kiriko</h3><p class="en">Elephant</p></div>
-          <p class="role">Director · Programmer</p>
-          <p class="line">방향을 잡고, 코드를 짜고, 스토어에 올립니다.</p>
-        </article>
-        <article class="member" style="--c1:#ff3b5c; --c2:#b9a8d6">
-          <div class="photo"><img src="assets/img/crew/dune.png" alt="Dune — 햄스터 캐릭터" loading="lazy"><span class="tag">햄스터</span></div>
-          <div class="who"><span class="no">02</span><h3>Dune</h3><p class="en">Hamster</p></div>
-          <p class="role">Art · Story · UI</p>
-          <p class="line">그림과 이야기, 손에 닿는 화면을 만듭니다.</p>
-        </article>
-        <article class="member" style="--c1:#5ce1c6; --c2:#3d7bff">
-          <div class="photo"><img src="assets/img/crew/capy.png" alt="Capy — 사막여우 캐릭터" loading="lazy"><span class="tag">사막여우</span></div>
-          <div class="who"><span class="no">03</span><h3>Capy</h3><p class="en">Fennec Fox</p></div>
-          <p class="role">Programmer</p>
-          <p class="line">게임이 돌아가게, 끝까지 버그를 잡습니다.</p>
-        </article>
-        <article class="member" style="--c1:#b9a8d6; --c2:#ffc83d">
-          <div class="photo"><img src="assets/img/crew/kora.png" alt="Kora — 고라니 캐릭터" loading="lazy"><span class="tag">고라니</span></div>
-          <div class="who"><span class="no">04</span><h3>Kora</h3><p class="en">Water Deer</p></div>
-          <p class="role">Designer · Animation · Concept Art</p>
-          <p class="line">원화를 그리고, Spine 으로 캐릭터에 숨을 불어넣습니다.</p>
-        </article>
-        <div class="member end">
-          <p>그리고<br>다음 날것은<br><b>당신?</b></p>
-          <a class="btn" href="#contact">연락하기 <span class="arr">→</span></a>
-        </div>
-      </div>
-      <div class="crew-progress"><i id="crew-bar"></i></div>
+  <!-- 3. 팀 — 통짜 그림 위에 오려낸 캐릭터를 겹쳐, 숨쉬기(IDLE) · 누르면 반응 + 정보 카드 -->
+  <section id="crew" class="crew">
+    <div class="crew-head">
+      <p class="eyebrow" data-reveal>The crew</p>
+      <h2 class="big" data-reveal style="--d:.08s">네 명이<br>굽고 있어요</h2>
+      <p class="crew-hint" data-reveal style="--d:.16s">캐릭터나 이름표를 눌러 보세요</p>
     </div>
+    <div class="crew-wrap" data-reveal style="--d:.2s">
+      <div class="scene" id="scene">
+        <img class="scene-bg" src="assets/img/crew-scene/stage.jpg" width="1672" height="1326" alt="Pancake Tycoon 팀 — 왼쪽부터 Dune(검은 고양이), Kiriko(코끼리, 머리 위에 Kora 고라니), Capy(회색 고양이)" loading="lazy">
+        <button class="actor" data-who="kiriko" style="left:29.605%;top:32.278%;width:41.866%;height:48.039%" aria-label="Kiriko 소개 보기"><img src="assets/img/crew-scene/kiriko-card.png" alt=""></button>
+        <button class="actor" data-who="dune" style="left:8.074%;top:50.452%;width:19.318%;height:29.412%" aria-label="Dune 소개 보기"><img src="assets/img/crew-scene/dune.png" alt=""></button>
+        <button class="actor" data-who="capy" style="left:75.478%;top:51.131%;width:17.524%;height:28.054%" aria-label="Capy 소개 보기"><img src="assets/img/crew-scene/capy.png" alt=""></button>
+        <button class="actor" data-who="kora" style="left:41.268%;top:32.278%;width:21.531%;height:12.066%" aria-label="Kora 소개 보기"><img src="assets/img/crew-scene/kora.png" alt=""></button>
+        <span class="zz" aria-hidden="true"><i>z</i><i>z</i><i>Z</i></span>
+        <button class="plate" data-who="dune" style="left:7.3%;top:89.37%;width:20.04%;height:8.82%" aria-label="Dune 이름표"></button>
+        <button class="plate" data-who="kiriko" style="left:29.9%;top:89.37%;width:20.1%;height:8.82%" aria-label="Kiriko 이름표"></button>
+        <button class="plate" data-who="kora" style="left:51.44%;top:89.37%;width:20.1%;height:8.82%" aria-label="Kora 이름표"></button>
+        <button class="plate" data-who="capy" style="left:74.16%;top:89.37%;width:20.16%;height:8.82%" aria-label="Capy 이름표"></button>
+        <div class="bubble" id="crew-bubble" aria-hidden="true"></div>
+      </div>
+      <aside class="profile" id="profile" aria-live="polite">
+        <div class="pf-empty">
+          <p class="pf-k">PROFILE</p>
+          <p class="pf-big">누가 누구일까요?</p>
+          <p class="pf-sub">그림 속 캐릭터를 누르면<br>여기에 소개가 떠요.</p>
+          <div class="pf-chips"><button data-who="dune">Dune</button><button data-who="kiriko">Kiriko</button><button data-who="kora">Kora</button><button data-who="capy">Capy</button></div>
+        </div>
+        <div class="pf-card" hidden>
+          <div class="pf-art"><img alt=""></div>
+          <p class="pf-k"><span class="pf-no"></span> · <span class="pf-animal"></span></p>
+          <h3 class="pf-name"></h3>
+          <p class="pf-role"></p>
+          <p class="pf-line"></p>
+          <div class="pf-nav"><button class="rb" data-step="-1" aria-label="이전 팀원">←</button><button class="rb" data-step="1" aria-label="다음 팀원">→</button><span class="sp"></span><button class="rb" data-close aria-label="닫기">✕</button></div>
+        </div>
+      </aside>
+    </div>
+    <p class="crew-next" data-reveal>그리고 다음 날것은 <b>당신?</b> <a class="btn" href="#contact">연락하기 <span class="arr">→</span></a></p>
   </section>
 
   <!-- 4. 프로젝트 -->
@@ -176,5 +176,6 @@
 
   <script src="assets/js/reel.js"></script>
   <script src="assets/js/site.js"></script>
+  <script src="assets/js/crew.js"></script>
 </body>
 </html>

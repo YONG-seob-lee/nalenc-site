@@ -19,7 +19,7 @@
   const CREW = [
     { name: "Kiriko", ini: "Ki", img: "kiriko", role: "DIRECTOR · PROGRAMMER", c1: "#ffc83d", c2: "#ff7a3d" },
     { name: "Dune", ini: "Du", img: "dune", role: "ART · STORY · UI", c1: "#ff3b5c", c2: "#b9a8d6" },
-    { name: "Capy", ini: "Ca", img: "capy", role: "PROGRAMMER", c1: "#5ce1c6", c2: "#3d7bff" },
+    { name: "Capy", ini: "Ca", img: "capy", role: "PROGRAMMER · STORY", c1: "#5ce1c6", c2: "#3d7bff" },
     { name: "Kora", ini: "Ko", img: "kora", role: "DESIGNER · ANIMATION", c1: "#b9a8d6", c2: "#ffc83d" },
   ];
   CREW.forEach((m) => { m.im = new Image(); m.im.onload = () => (dirty = true); m.im.src = `assets/img/crew/${m.img}.png`; });
@@ -236,17 +236,17 @@
       ctx.beginPath(); ctx.arc(0, 0, rr + U * 1.6, 0, TAU); ctx.stroke(); ctx.restore();
       ctx.globalAlpha = 1;
       if (m.im.complete && m.im.naturalWidth) {
-        const iw = m.im.naturalWidth, ih = m.im.naturalHeight, ks = (rr * 1.5) / Math.max(iw, ih);
+        const iw = m.im.naturalWidth, ih = m.im.naturalHeight, ks = (rr * 2.04) / Math.min(iw, ih);
         ctx.save(); ctx.beginPath(); ctx.arc(x, y, rr, 0, TAU); ctx.clip();
         ctx.globalAlpha = 1 - shrink;
-        ctx.drawImage(m.im, x - (iw * ks) / 2, y - (ih * ks) / 2 + rr * 0.08, iw * ks, ih * ks);
+        ctx.drawImage(m.im, x - (iw * ks) / 2, y - (ih * ks) / 2, iw * ks, ih * ks);
         ctx.restore(); ctx.globalAlpha = 1;
       } else txt(m.ini, x, y + rr * 0.05, { size: rr * 0.62, fam: F.kr, color: C.ink, a: 0.85 * (1 - shrink) });
       // 이름 · 역할
       const la = 1 - seg(u, 3.5, 3.8);
       if (la > 0) {
         const nk = seg(u, 1.2 + i * 0.15, 1.7 + i * 0.15);
-        const name = [...m.name].slice(0, Math.ceil(nk * 3)).join("");
+        const chars = [...m.name], name = chars.slice(0, Math.ceil(nk * chars.length)).join("");
         txt(name, x, y + rr + U * 4, { size: Math.max(14, U * 2.6), fam: F.kr, a: la });
         const rk = seg(u, 1.6 + i * 0.15, 2.1 + i * 0.15);
         txt(m.role.slice(0, Math.ceil(rk * m.role.length)), x, y + rr + U * 7.6, { size: Math.max(8, Math.min(U * 1.25, sp / 15)), fam: F.mono, a: la * 0.9, color: m.c1, ls: 1 });
