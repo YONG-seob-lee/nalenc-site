@@ -57,8 +57,8 @@ html:not(.js) .mani { color: var(--text); }
 /* 숨쉬기 — 커지기만 한다(원본 그림이 비치지 않게) */
 @keyframes breathe { 0%, 100% { transform: scale(1, 1); } 50% { transform: scale(1.008, 1.022); } }
 @keyframes sleep { 0%, 100% { transform: scale(1, 1); } 45% { transform: scale(1.025, 1.06); } }
-/* 흰 테두리 — 검은 윤곽선 자리를 흰 띠(-ol.png)로 덮고, 바깥으로 조금 더 두껍게 */
-.actor img.ol { opacity: 0; transition: opacity .2s; filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff); }
+/* 흰 테두리 — 검은 윤곽선 바깥쪽 절반을 흰 띠(-ol.png)로 덮고, 바깥으로 1px */
+.actor img.ol { opacity: 0; transition: opacity .2s; filter: drop-shadow(1px 0 0 #fff) drop-shadow(-1px 0 0 #fff) drop-shadow(0 1px 0 #fff) drop-shadow(0 -1px 0 #fff); }
 .actor:hover img.ol, .actor:focus-visible img.ol, .actor.sel img.ol,
 .actor[data-who="kiriko"]:hover ~ .actor[data-who="kora"] img.ol, .scene.sel-kiriko .actor[data-who="kora"] img.ol { opacity: 1; }
 .actor:focus-visible, .plate:focus-visible { outline: none; }
