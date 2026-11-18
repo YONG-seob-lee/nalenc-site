@@ -73,6 +73,54 @@ html:not(.js) .mani { color: var(--text); }
 .scene.sel-kiriko .actor[data-who="kora"] { filter: none; z-index: 5; }
 .actor.sel img:not(.ol) { filter: drop-shadow(0 14px 18px rgba(13, 8, 22, .45)); }
 
+/* 선택 연출(acting) — 아은: 눈 빛나며 폭풍 타자 / 지혜: 고개 쳐들고 비명 / 용섭: 빌드 중 비눗방울 */
+.actor .act { position: absolute; inset: 0; display: none; pointer-events: none; }
+.actor.acting .act { display: block; }
+.actor .act img.p { position: absolute; animation: none; transform-origin: 50% 100%; }
+/* 아은 */
+.actor[data-who="dune"].acting > img { visibility: hidden; }
+.actor[data-who="dune"] .act { animation: jit .09s steps(2) infinite; }
+@keyframes jit { 50% { transform: translate(.6%, -.4%); } }
+.actor[data-who="dune"] .act img.body { inset: 0; width: 100%; height: 100%; filter: brightness(.45); }
+.actor[data-who="dune"] .act img.paw { left: 0; top: 81.282%; width: 28.793%; height: 17.692%; filter: brightness(.6); animation: type .14s ease-in-out infinite alternate; }
+.actor[data-who="dune"] .act img.paw.r { left: 66.873%; top: 82.051%; width: 30.341%; height: 17.436%; animation-delay: -.07s; }
+@keyframes type { from { transform: translateY(0); } to { transform: translateY(-26%) rotate(-3deg); } }
+.actor[data-who="dune"] .eye { position: absolute; left: 28.8%; top: 24.4%; width: 12%; aspect-ratio: 1.15; translate: -50% -50%; border-radius: 50%;
+  background: radial-gradient(circle, #fffbe0 0 22%, #ffe14a 38%, rgba(255, 200, 40, .55) 55%, rgba(255, 200, 40, 0) 72%); animation: glare .5s ease-in-out infinite alternate; }
+.actor[data-who="dune"] .eye.r { left: 65.3%; top: 23.6%; }
+@keyframes glare { from { transform: scale(.85); filter: brightness(1); } to { transform: scale(1.12); filter: brightness(1.35); } }
+.actor[data-who="dune"] .kb { position: absolute; left: -6%; right: -6%; bottom: -1%; height: 11%; border: 3px solid #5a2a1a; border-radius: 6px;
+  background: repeating-linear-gradient(90deg, transparent 0 7%, rgba(0, 0, 0, .45) 7% 8%), repeating-linear-gradient(0deg, transparent 0 30%, rgba(0, 0, 0, .45) 30% 36%), linear-gradient(#e9e3da, #b8aea3);
+  box-shadow: 0 6px 0 #3a1d12; animation: kb .14s steps(2) infinite; }
+@keyframes kb { 50% { transform: translateY(2%); } }
+.actor[data-who="dune"] .tk i { position: absolute; bottom: 10%; font-style: normal; font-family: var(--kr-display, var(--display)); font-weight: 900; font-size: clamp(12px, 1.7vw, 24px); color: #fff; white-space: nowrap;
+  -webkit-text-stroke: 4px #5a2a1a; paint-order: stroke fill; text-shadow: 0 3px 0 #5a2a1a; opacity: 0; animation: tk .7s ease-out infinite; }
+.actor[data-who="dune"] .tk i:nth-child(1) { left: -12%; }
+.actor[data-who="dune"] .tk i:nth-child(2) { left: 78%; animation-delay: .18s; }
+.actor[data-who="dune"] .tk i:nth-child(3) { left: 8%; animation-delay: .36s; }
+.actor[data-who="dune"] .tk i:nth-child(4) { left: 62%; animation-delay: .52s; }
+@keyframes tk { 0% { opacity: 0; transform: translateY(0) scale(.6); } 20% { opacity: 1; transform: translateY(-40%) scale(1.1); } 100% { opacity: 0; transform: translateY(-260%) scale(1); } }
+/* 지혜(고라니) — 엉덩이를 축으로 고개를 쳐들고 부들부들 */
+.actor[data-who="kora"].acting > img { transform-origin: 83% 88%; animation: rear 2.6s cubic-bezier(.3, 1.3, .5, 1) both; }
+@keyframes rear { 0% { transform: rotate(0); } 12% { transform: rotate(30deg) scale(1.06); }
+  18% { transform: rotate(25deg) scale(1.06); } 24% { transform: rotate(29deg) scale(1.06); } 30% { transform: rotate(24deg) scale(1.06); } 36% { transform: rotate(29deg) scale(1.06); }
+  42% { transform: rotate(25deg) scale(1.06); } 48% { transform: rotate(29deg) scale(1.06); } 54% { transform: rotate(24deg) scale(1.06); } 60% { transform: rotate(29deg) scale(1.06); }
+  66% { transform: rotate(25deg) scale(1.06); } 72% { transform: rotate(28deg) scale(1.06); } 86% { transform: rotate(4deg); } 100% { transform: rotate(0); } }
+.actor[data-who="kora"] .scream { inset: auto; left: -18%; top: -95%; font-family: var(--kr-display, var(--display)); font-weight: 900; font-size: clamp(18px, 3.4vw, 50px); color: #fff; white-space: nowrap; letter-spacing: -.02em;
+  -webkit-text-stroke: 6px #5a2a1a; paint-order: stroke fill; text-shadow: 0 5px 0 #5a2a1a; rotate: -12deg; animation: scream 2.6s ease-out both; }
+@keyframes scream { 0%, 8% { opacity: 0; transform: scale(.3); } 14% { opacity: 1; transform: scale(1.25); }
+  20% { transform: scale(1) translate(2%, -3%); } 26% { transform: scale(1.05) translate(-2%, 2%); } 32% { transform: scale(1) translate(2%, 2%); } 38% { transform: scale(1.05) translate(-2%, -2%); }
+  44% { transform: scale(1) translate(2%, -2%); } 50% { transform: scale(1.05) translate(-2%, 2%); } 56% { transform: scale(1) translate(2%, 2%); } 62% { transform: scale(1.05) translate(-2%, -3%); }
+  72% { opacity: 1; transform: scale(1); } 86%, 100% { opacity: 0; transform: scale(1.1) translateY(-20%); } }
+/* 용섭(코끼리) — 코끝에서 비눗방울 */
+.actor[data-who="kiriko"] .soap i { position: absolute; left: 55%; top: 56%; width: var(--s); aspect-ratio: 1; border-radius: 50%; opacity: 0; border: 2px solid rgba(255, 255, 255, .9); box-shadow: inset 0 0 0 3px rgba(150, 210, 255, .35), inset -4px -6px 10px rgba(255, 140, 220, .45), 0 0 8px rgba(255, 255, 255, .5);
+  background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, .95) 0 9%, rgba(255, 255, 255, 0) 12%),
+    radial-gradient(circle, rgba(255, 255, 255, 0) 52%, rgba(160, 220, 255, .45) 68%, rgba(255, 160, 230, .55) 84%, rgba(255, 255, 255, .9) 100%);
+  animation: soap 1.9s ease-out var(--dl) infinite; }
+@keyframes soap { 0% { left: 55%; top: 56%; opacity: 0; transform: translate(-50%, -50%) scale(.2); } 12% { opacity: 1; }
+  80% { left: var(--tx); top: var(--ty); opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  88% { left: var(--tx); top: var(--ty); opacity: 0; transform: translate(-50%, -50%) scale(1.5); } 100% { left: var(--tx); top: var(--ty); opacity: 0; } }
+
 .plate { z-index: 5; border-radius: 10px; transition: box-shadow .3s, background .3s; }
 .plate:hover, .plate:focus-visible { box-shadow: 0 0 0 3px rgba(255, 200, 61, .9); }
 .plate.sel { box-shadow: 0 0 0 3px var(--butter), 0 0 24px rgba(255, 200, 61, .6); }
@@ -133,7 +181,7 @@ html:not(.js) .mani { color: var(--text); }
   .bubble { border-width: 2px; padding: 4px 9px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .actor, .actor img, .pf-art img, .zz i { animation: none !important; }
+  .actor, .actor img, .pf-art img, .zz i, .act, .act * { animation: none !important; }
 }
 
 /* 4. 프로젝트 */
