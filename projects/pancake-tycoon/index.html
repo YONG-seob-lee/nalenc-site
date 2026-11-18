@@ -213,17 +213,24 @@
     </div>
   </section>
 
-  <!-- Spine 시험(2026-11-19, 임시 — 나중에 지움): play/spine-duck/ 과 같이 지울 것 -->
+  <!-- TODO(Kiriko): Spine 시험 임시 칸(2026-11-19) — 나중에 이 섹션 통째로 + play/spine-duck/ 폴더를 같이 지울 것 -->
   <section class="gameplay" id="spine-test">
     <div class="gp-head">
       <p class="eyebrow" data-reveal>Spine test</p>
       <h2 class="gp-title" data-reveal style="--d:.08s">오리가 숨을 쉬어요</h2>
-      <p class="try-sub" data-reveal style="--d:.12s">그림 한 장을 AI가 부위로 나누고 뼈를 넣어 만든 첫 동작(시험판).</p>
+      <p class="try-sub" data-reveal style="--d:.12s">그림 한 장을 AI가 부위로 나누고 뼈를 넣어 만든 첫 동작(1회차)과, 메모 한 줄로 다시 맡긴 결과(2회차) — 시험판.</p>
     </div>
-    <div data-reveal style="--d:.16s; max-width:640px; margin:0 auto; aspect-ratio:1/1; border-radius:16px; overflow:hidden">
-      <iframe src="../../play/spine-duck/index.html" title="오리 숨쉬기" loading="lazy" style="width:100%; height:100%; border:0; display:block"></iframe>
+    <div data-reveal style="--d:.16s; display:flex; flex-wrap:wrap; gap:16px; max-width:1100px; margin:0 auto">
+      <figure style="flex:1 1 320px; min-width:0; margin:0; border-radius:16px; overflow:hidden">
+        <iframe src="../../play/spine-duck/round1.html" title="1회차 — 일반 idle" loading="lazy" style="width:100%; aspect-ratio:1/1; border:0; display:block"></iframe>
+        <figcaption class="try-sub" style="padding:10px 4px 0; text-align:center"><b>1회차 · 일반 idle</b><br>몸 ±1.2% · 머리 ±6.5px · 2초 반복</figcaption>
+      </figure>
+      <figure style="flex:1 1 320px; min-width:0; margin:0; border-radius:16px; overflow:hidden">
+        <iframe src="../../play/spine-duck/round2.html" title="2회차 — 메모 반영" loading="lazy" style="width:100%; aspect-ratio:1/1; border:0; display:block"></iframe>
+        <figcaption class="try-sub" style="padding:10px 4px 0; text-align:center"><b>2회차 · 메모 반영</b><br>“숨을 조금 더 크게” → 몸 ±1.7% · 머리 ±9.2px(약 1.4배)</figcaption>
+      </figure>
     </div>
-    <p class="try-sub" style="text-align:center; margin-top:12px"><a href="../../play/spine-duck/index.html" target="_blank" rel="noopener">크게 보기 →</a></p>
+    <p class="try-sub" style="text-align:center; margin-top:12px"><a href="../../play/spine-duck/index.html" target="_blank" rel="noopener">크게 비교하기 →</a></p>
   </section>
 
   <section id="contact" class="cta">
