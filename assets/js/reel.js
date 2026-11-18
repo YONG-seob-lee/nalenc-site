@@ -17,10 +17,10 @@
   const C = { ink: "#0d0816", ink2: "#171024", ink3: "#241a38", text: "#f6f1ff", text3: "#8b80a3", butter: "#ffc83d", berry: "#ff3b5c", lilac: "#b9a8d6", mint: "#5ce1c6", batter: "#ffefd2", pan: "#2a2233", gold: "#e59a3a", gold2: "#ffd98a" };
   const F = { disp: '"Unbounded", sans-serif', kr: '"Black Han Sans", "Noto Sans KR", sans-serif', mono: '"JetBrains Mono", monospace' };
   const CREW = [
-    { name: "Kiriko", ini: "Ki", img: "kiriko", role: "DIRECTOR · PROGRAMMER", c1: "#ffc83d", c2: "#ff7a3d" },
-    { name: "Dune", ini: "Du", img: "dune", role: "ART · STORY · UI", c1: "#ff3b5c", c2: "#b9a8d6" },
-    { name: "Capy", ini: "Ca", img: "capy", role: "PROGRAMMER · STORY", c1: "#5ce1c6", c2: "#3d7bff" },
-    { name: "Kora", ini: "Ko", img: "kora", role: "DESIGNER · ANIMATION", c1: "#b9a8d6", c2: "#ffc83d" },
+    { name: "Kiriko", ini: "Ki", img: "kiriko", role: "PROGRAMMER", c1: "#ffc83d", c2: "#ff7a3d" },
+    { name: "Dune", ini: "Du", img: "dune", role: "ART", c1: "#ff3b5c", c2: "#b9a8d6" },
+    { name: "Capy", ini: "Ca", img: "capy", role: "PROGRAMMER", c1: "#5ce1c6", c2: "#3d7bff" },
+    { name: "Kora", ini: "Ko", img: "kora", role: "ANIMATOR", c1: "#b9a8d6", c2: "#ffc83d" },
   ];
   CREW.forEach((m) => { m.im = new Image(); m.im.onload = () => (dirty = true); m.im.src = `assets/img/crew/${m.img}.png`; });
   const duck = new Image();

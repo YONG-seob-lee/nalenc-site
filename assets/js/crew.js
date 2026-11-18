@@ -6,10 +6,10 @@
   if (!scene || !prof) return;
   const ORDER = ["dune", "kiriko", "kora", "capy"]; // 그림 속 이름표 순서
   const M = {
-    dune: { no: "01", name: "Dune", animal: "검은 고양이 · Black Cat", role: "Art · Story · UI", line: "그림과 이야기, 손에 닿는 화면을 만듭니다.", say: "이야기 굽는 중…", color: "#ff3b5c" },
-    kiriko: { no: "02", name: "Kiriko", animal: "코끼리 · Elephant", role: "Director · Programmer", line: "방향을 잡고, 코드를 짜고, 스토어에 올립니다.", say: "빌드 올리는 중!", color: "#ffc83d", art: "kiriko-card" },
-    kora: { no: "03", name: "Kora", animal: "고라니 · Water Deer", role: "2D Animator · Concept Art", line: "원화를 그리고, Spine 으로 캐릭터에 숨을 불어넣습니다.", say: "zz… 앗, 일어났어요!", color: "#b9a8d6" },
-    capy: { no: "04", name: "Capy", animal: "회색 고양이 · Gray Cat", role: "Programmer · Story Writer", line: "게임이 돌아가게 코드를 짜고, 그 위에 이야기를 씁니다.", say: "버그 잡고, 이야기 쓰는 중!", color: "#5ce1c6" },
+    dune: { no: "01", name: "Dune", animal: "검은 고양이 · Black Cat", role: "Art", line: "캐릭터와 화면, 손에 닿는 모든 그림을 그립니다.", say: "이야기 굽는 중…", color: "#ff3b5c" },
+    kiriko: { no: "02", name: "Kiriko", animal: "코끼리 · Elephant", role: "Programmer", line: "방향을 잡고, 코드를 짜고, 스토어에 올립니다.", say: "빌드 올리는 중!", color: "#ffc83d", art: "kiriko-card" },
+    kora: { no: "03", name: "Kora", animal: "고라니 · Water Deer", role: "Animator", line: "원화를 그리고, Spine 으로 캐릭터에 숨을 불어넣습니다.", say: "zz… 앗, 일어났어요!", color: "#b9a8d6" },
+    capy: { no: "04", name: "Capy", animal: "회색 고양이 · Gray Cat", role: "Programmer", line: "게임이 돌아가게 코드를 짭니다.", say: "버그 잡는 중!", color: "#5ce1c6" },
   };
   const actors = Object.fromEntries([...scene.querySelectorAll(".actor")].map((a) => [a.dataset.who, a]));
   const plates = [...scene.querySelectorAll(".plate")];
@@ -57,8 +57,6 @@
     empty.hidden = true; card.hidden = false;
     $(".pf-art img").src = `assets/img/crew-scene/${m.art || who}.png`;
     $(".pf-art img").alt = `${m.name} 캐릭터`;
-    $(".pf-no").textContent = m.no;
-    $(".pf-animal").textContent = m.animal;
     $(".pf-name").textContent = m.name;
     $(".pf-role").textContent = m.role;
     $(".pf-line").textContent = m.line;
